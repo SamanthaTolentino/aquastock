@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/fish-app/' element={<Home />} />
       </Routes>
     </>
   )
