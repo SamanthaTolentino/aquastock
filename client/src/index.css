@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  color: #695D55;
+}
+
+body {
+  background-color: #CEE9F4;
+}
+
+@font-face {
+  font-family: 'Regular';
+  src: local('Cute Dino'),
+  url('./assets/fonts/Cute\ Dino.ttf') format('truetype');
+}
+
+.stroke-1 {
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: #695D55;
+}
+
+.fix-stroke {
+  paint-order: stroke fill;
+}
+
+select:focus {
+  outline: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.rotate-arrow-up {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease-out;
+}
+
+.rotate-arrow-down {
+  transform: rotate(0deg);
+  transition: transform 0.2s ease-out;
+}
