@@ -8,7 +8,7 @@ const { getFish, getFilteredFish } = require('../controllers/authController')
 router.use(
   cors({
     credentials: true,
-    origin: 'https://aquastock.onrender.com'
+    origin: 'http://localhost:5173'
   })
 )
 
