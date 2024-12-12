@@ -12,8 +12,8 @@ body {
 
 @font-face {
   font-family: 'Regular';
-  src: local('Cute Dino'),
-  url('/public/fonts/Cute\ Dino.ttf') format('truetype');
+  src: local('CuteDino'),
+  url('./assets/fonts/CuteDino.ttf') format('truetype');
 }
 
 .stroke-1 {
