@@ -13,7 +13,7 @@ body {
 @font-face {
   font-family: 'Regular';
   src: local('Cute Dino'),
-  url('$fonts/Cute\ Dino.ttf') format('truetype');
+  url('/public/fonts/Cute\ Dino.ttf') format('truetype');
 }
 
 .stroke-1 {
