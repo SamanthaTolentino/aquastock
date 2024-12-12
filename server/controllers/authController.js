@@ -1,8 +1,8 @@
 const Fish = require('../models/Fish')
 
-const test = (req, res) => {
-  res.json('testsetst')
-}
+// const test = (req, res) => {
+//   res.json('testsetst')
+// }
 
 const getFish = async (req, res) => {
   try {
@@ -35,7 +35,7 @@ const getFilteredFish = async (req, res) => {
 }
 
 module.exports = {
-  test,
+  // test,
   getFish,
   getFilteredFish
 }

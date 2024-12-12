@@ -10,6 +10,7 @@ import aquaStock from '../assets/img/AquaStock.png'
 import fishLogo1 from '../assets/img/fish-logo-1.png'
 import fishLogo2 from '../assets/img/fish-logo-2.png'
 import expandIcon from '../assets/img/expand-icon.png'
+import { getImageURL } from '../utils/image-util'
 
 export default function Home() {
   let [open, setOpen] = useState(false)
@@ -96,8 +97,11 @@ export default function Home() {
         setCurrentSelection(0)
         setError(false)
   
-        const image = await import(`../${response.data[0].imgPath}`)
-        setImgPath(image.default)
+        // const image = await import(`./${response.data[0].imgPath}.png`)
+        // const path =  awaitimportModule(`./assets/img/${response.data[0].imgPath}.png`)
+        const image = getImageURL(response.data[0].imgPath)
+        console.log(image)
+        setImgPath(image)
       }
     }
     catch (error) {
@@ -160,8 +164,12 @@ export default function Home() {
         let currentIndex = currentSelection - 1
         setCurrentSelection(currentIndex)
 
-        const image = await import(`../${filteredFish[currentIndex].imgPath}`)
-        setImgPath(image.default)
+        // const image = await import(`../${filteredFish[currentIndex].imgPath}`)
+        const image = getImageURL(filteredFish[currentIndex].imgPath)
+        console.log(image)
+        setImgPath(image)
+
+        // setImgPath(image.default)
       }
     }
   }
@@ -172,8 +180,12 @@ export default function Home() {
         let currentIndex = currentSelection + 1
         setCurrentSelection(currentIndex)
 
-        const image = await import(`../${filteredFish[currentIndex].imgPath}`)
-        setImgPath(image.default)
+        // const image = await import(`../${filteredFish[currentIndex].imgPath}`)
+        // setImgPath(image.default)
+
+        const image = getImageURL(filteredFish[currentIndex].imgPath)
+        console.log(image)
+        setImgPath(image)
       }
     }
   }

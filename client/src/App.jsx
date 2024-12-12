@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/aquastock/' element={<Home />} />
+        <Route path='/' element={<Home />} />
       </Routes>
     </>
   )
