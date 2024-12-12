@@ -1,9 +1,5 @@
 const Fish = require('../models/Fish')
 
-// const test = (req, res) => {
-//   res.json('testsetst')
-// }
-
 const getFish = async (req, res) => {
   try {
     const fishes = await Fish.find()
@@ -35,7 +31,6 @@ const getFilteredFish = async (req, res) => {
 }
 
 module.exports = {
-  // test,
   getFish,
   getFilteredFish
 }

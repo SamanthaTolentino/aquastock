@@ -87,7 +87,7 @@ export default function Home() {
       })
 
       if (response.data.error) {
-        console.log('errorrrr')
+        console.log('error')
         setFilteredFish(response.data)
         setError(true)
       }
@@ -100,7 +100,6 @@ export default function Home() {
         // const image = await import(`./${response.data[0].imgPath}.png`)
         // const path =  awaitimportModule(`./assets/img/${response.data[0].imgPath}.png`)
         const image = getImageURL(response.data[0].imgPath)
-        console.log(image)
         setImgPath(image)
       }
     }
@@ -166,7 +165,6 @@ export default function Home() {
 
         // const image = await import(`../${filteredFish[currentIndex].imgPath}`)
         const image = getImageURL(filteredFish[currentIndex].imgPath)
-        console.log(image)
         setImgPath(image)
 
         // setImgPath(image.default)
@@ -184,7 +182,6 @@ export default function Home() {
         // setImgPath(image.default)
 
         const image = getImageURL(filteredFish[currentIndex].imgPath)
-        console.log(image)
         setImgPath(image)
       }
     }
