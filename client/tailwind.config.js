@@ -22,6 +22,9 @@ export default {
       '3': '3px',
     },
     extend: {
+      spacing: {
+        // '400': '500px',
+      },
       fontFamily: {
         regular: ['Regular']
       },
