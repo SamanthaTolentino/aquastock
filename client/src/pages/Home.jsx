@@ -188,10 +188,10 @@ export default function Home() {
   }
 
   const formDiv = 
-    <form onSubmit={getFilteredFish} className='flex flex-col h-full'>
+    <form onSubmit={getFilteredFish} className='flex flex-col xl:w-300px xl:h-350px'>
       {
         selectOptions.map((select, index) => (
-          <div className='grow pb-4' key={index}>
+          <div className='grow flex flex-col xl:mb-0 mb-7' key={index}>
             <label>{select.label}</label>  
             <div className='relative flex bg-teal-1 py-3 px-2 rounded-xl'>
               <select ref={wrapperRef} defaultValue={'default'} className='bg-transparent w-full z-10' name="" id="" onClick={() => {setOpen(!open); setActiveSelect(index)}} onChange={(e) => updateFormData(e.target.value, index)}>
@@ -217,13 +217,16 @@ export default function Home() {
         : 
           <></>
       }
-      <div className='flex justify-center pb-3'>
+      <div className='flex justify-center'>
         <button type='submit' className='bg-purple-1 text-white stroke-1 fix-stroke w-32 py-2 px-4 rounded-lg transition ease-in-out hover:bg-purple-2'>OK</button>
       </div>
     </form>
 
+    const emptyFishDiv = 
+      <div className='flex flex-col xl:w-600px xl:h-350px h-450px'></div>
+
     const fishDiv =
-      <div className='flex flex-col items-center lg:h-full h-80'>
+      <div className='flex flex-col items-center xl:w-600px xl:h-350px h-450px'>
         <img className='h-1/2 animate-bounceFish py-2' src={imgPath} alt="" />
         <div className='h-1/2 bg-teal-1 w-full rounded-lg overflow-auto py-4 px-5'>
           <div>{filteredFish.length ? filteredFish[currentSelection].description : ''}</div>
@@ -234,36 +237,31 @@ export default function Home() {
     <>
       {
         loading ? 
-          <div className='bg-blue-1 h-screen grid grid-rows-8 grid-cols-4'> 
-            <div className='opacity-0 animate-fadeInOut row-start-4 col-start-2 justify-self-end self-center w-24 mr-1 scale-x-[-1]'>
-              <img className='animate-bounceDownUp' src={fishLogo2} alt='' />
-            </div>     
-            <div className='opacity-0 animate-fadeInOut row-start-4 col-start-3 justify-self-start self-center w-24 ml-1'>
-              <img className='animate-bounceUpDown' src={fishLogo1} alt='' />
-            </div>           
+          <div className='bg-blue-1 h-screen flex flex-col items-center justify-center'> 
+            <div className='flex items-center mb-4'>
+              <div className='opacity-0 animate-fadeInOut justify-self-end w-24 mr-1 scale-x-[-1]'>
+                <img className='animate-bounceDownUp' src={fishLogo2} alt='' />
+              </div>     
+              <div className='opacity-0 animate-fadeInOut justify-self-start w-24 ml-1'>
+                <img className='animate-bounceUpDown' src={fishLogo1} alt='' />
+              </div>           
+            </div>
             <div className='animate-slideUpDown mt-1 row-start-5 col-start-2 col-span-2 justify-self-center w-40'>
               <p className='opacity-0 animate-fadeInOut font-regular text-white text-xl stroke-1 fix-stroke text-center'>AquaStock</p>
             </div>      
           </div>
         :
-          <div className='bg-blue-1 lg:h-screen lg:grid lg:grid-rows-8 lg:content-between lg:p-0 px-6 py-7 flex flex-col font-regular'>
-            <div></div>
-            <div className='lg:row-start-2 lg:row-span-5 lg:grid lg:grid-cols-8 lg:gap-6 lg:pb-4 pb-6 flex flex-col'>
-              {/* <div className='col-start-2 col-span-2'> */}
-                <BoxDiv title={'Enter Details'} content={formDiv} gridClass={'lg:col-start-2 lg:col-span-2 lg:mb-0 mb-6'} />
-              {/* </div> */}
-              {/* <div className='col-start-4 col-span-4 flex flex-col'> */}
-                {/* <div className='h-full'> */}
-                  {
-                    filteredFish.length ?
-                      <BoxDiv title={filteredFish[currentSelection].name} content={fishDiv} gridClass={'lg:col-start-4 lg:col-span-4'} /> 
-                    : <BoxDiv title={okClicked ? 'No fish in our database yet :(' : 'Enter info and hit OK!'} gridClass={'lg:col-start-4 lg:col-span-4 lg:h-full h-80'} /> 
-                  }       
-                {/* </div> */}
-              {/* </div> */}
-            </div>
-            <div className='lg:grid lg:grid-cols-8 lg:gap-6'>
-              <div className='col-start-4 col-span-4'>
+          <div className='bg-blue-1 h-screen xl:overflow-hidden px-6 py-7 flex xl:flex-row flex-col xl:items-center xl:justify-center font-regular'>
+            <BoxDiv title={'Enter Details'} content={formDiv} gridClass={'xl:mr-2 xl:mb-0 mb-7'} />
+            <div className='xl:grid grid-rows-3 gap-4'>
+              <div className='row-start-2'>
+                {
+                  filteredFish.length ?
+                    <BoxDiv title={filteredFish[currentSelection].name} content={fishDiv} gridClass={'xl:ml-2 xl:mb-0 mb-7'} /> 
+                  : <BoxDiv title={okClicked ? 'No fish in our database yet :(' : 'Enter info and hit OK!'} content={emptyFishDiv} gridClass={'xl:ml-2 xl:mb-0 mb-7'} />
+                }       
+              </div>
+              <div className='row-start-3 xl:mb-0 mb-7'>
                 <div className='flex justify-center items-center'>
                   <button onClick={goBack} className='mr-5 transition ease-in-out hover:scale-125'>
                     <img className='w-10 animate-wiggleLeft' src={arrowLeft} alt="arrowLeft" />
@@ -274,7 +272,7 @@ export default function Home() {
                   </button>
                 </div>
               </div>
-            </div>  
+            </div>
           </div>
       }
     </>
