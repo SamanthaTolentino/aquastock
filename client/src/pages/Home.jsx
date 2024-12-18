@@ -191,7 +191,7 @@ export default function Home() {
     <form onSubmit={getFilteredFish} className='flex flex-col xl:w-300px xl:h-350px'>
       {
         selectOptions.map((select, index) => (
-          <div className='grow flex flex-col' key={index}>
+          <div className='grow flex flex-col xl:mb-0 mb-7' key={index}>
             <label>{select.label}</label>  
             <div className='relative flex bg-teal-1 py-3 px-2 rounded-xl'>
               <select ref={wrapperRef} defaultValue={'default'} className='bg-transparent w-full z-10' name="" id="" onClick={() => {setOpen(!open); setActiveSelect(index)}} onChange={(e) => updateFormData(e.target.value, index)}>
@@ -223,10 +223,10 @@ export default function Home() {
     </form>
 
     const emptyFishDiv = 
-      <div className='flex flex-col xl:w-600px h-350px'></div>
+      <div className='flex flex-col xl:w-600px xl:h-350px h-450px'></div>
 
     const fishDiv =
-      <div className='flex flex-col items-center xl:w-600px h-350px'>
+      <div className='flex flex-col items-center xl:w-600px xl:h-350px h-450px'>
         <img className='h-1/2 animate-bounceFish py-2' src={imgPath} alt="" />
         <div className='h-1/2 bg-teal-1 w-full rounded-lg overflow-auto py-4 px-5'>
           <div>{filteredFish.length ? filteredFish[currentSelection].description : ''}</div>
@@ -259,7 +259,7 @@ export default function Home() {
                   : <BoxDiv title={okClicked ? 'No fish in our database yet :(' : 'Enter info and hit OK!'} content={emptyFishDiv} gridClass={'xl:ml-2 xl:mb-0 mb-7'} />
                 }       
               </div>
-              <div className='row-start-3'>
+              <div className='row-start-3 xl:mb-0 mb-7'>
                 <div className='flex justify-center items-center'>
                   <button onClick={goBack} className='mr-5 transition ease-in-out hover:scale-125'>
                     <img className='w-10 animate-wiggleLeft' src={arrowLeft} alt="arrowLeft" />
