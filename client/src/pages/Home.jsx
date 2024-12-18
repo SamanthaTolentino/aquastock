@@ -58,8 +58,8 @@ export default function Home() {
   ]
 
   useEffect(() => {
-    // setLoading(true)
-    setLoading(false)
+    setLoading(true)
+    // setLoading(false)
 
     setTimeout(() => {
       setLoading(false)
@@ -237,13 +237,15 @@ export default function Home() {
     <>
       {
         loading ? 
-          <div className='bg-blue-1 h-screen'> 
-            <div className='opacity-0 animate-fadeInOut row-start-4 col-start-2 justify-self-end self-center w-24 mr-1 scale-x-[-1]'>
-              <img className='animate-bounceDownUp' src={fishLogo2} alt='' />
-            </div>     
-            <div className='opacity-0 animate-fadeInOut row-start-4 col-start-3 justify-self-start self-center w-24 ml-1'>
-              <img className='animate-bounceUpDown' src={fishLogo1} alt='' />
-            </div>           
+          <div className='bg-blue-1 h-screen flex flex-col items-center justify-center'> 
+            <div className='flex items-center mb-4'>
+              <div className='opacity-0 animate-fadeInOut justify-self-end w-24 mr-1 scale-x-[-1]'>
+                <img className='animate-bounceDownUp' src={fishLogo2} alt='' />
+              </div>     
+              <div className='opacity-0 animate-fadeInOut justify-self-start w-24 ml-1'>
+                <img className='animate-bounceUpDown' src={fishLogo1} alt='' />
+              </div>           
+            </div>
             <div className='animate-slideUpDown mt-1 row-start-5 col-start-2 col-span-2 justify-self-center w-40'>
               <p className='opacity-0 animate-fadeInOut font-regular text-white text-xl stroke-1 fix-stroke text-center'>AquaStock</p>
             </div>      
