@@ -2,21 +2,17 @@ import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 
 import BoxDiv from '../components/BoxDiv'
-import SelectField from '../components/SelectField'
 import arrowSelect from '../assets/img/arrow-select.png'
 import arrowLeft from '../assets/img/arrow-left.png'
 import arrowRight from '../assets/img/arrow-right.png'
-import aquaStock from '../assets/img/AquaStock.png'
 import fishLogo1 from '../assets/img/fish-logo-1.png'
 import fishLogo2 from '../assets/img/fish-logo-2.png'
-import expandIcon from '../assets/img/expand-icon.png'
 import { getImageURL } from '../utils/image-util'
 
 export default function Home() {
   let [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [activeSelect, setActiveSelect] = useState()
-  const [fishCollection, setFishCollection] = useState()
   const [filteredFish, setFilteredFish] = useState([])
   const [currentSelection, setCurrentSelection] = useState(0)
   const [okClicked, setOkClicked] = useState(false)
@@ -58,19 +54,12 @@ export default function Home() {
   ]
 
   useEffect(() => {
-    setLoading(true)
-    // setLoading(false)
+    // setLoading(true)
+    setLoading(false)
 
     setTimeout(() => {
       setLoading(false)
     }, 5800)
-
-    // const getFishCollection = async () => {
-    //   let response = await axios.get('/getFish')
-    //   setFishCollection(response.data)
-    // }
-
-    // getFishCollection()
   }, [])
 
   const getFilteredFish = async (e) => {
@@ -96,9 +85,7 @@ export default function Home() {
         setFilteredFish(response.data)
         setCurrentSelection(0)
         setError(false)
-  
-        // const image = await import(`./${response.data[0].imgPath}.png`)
-        // const path =  awaitimportModule(`./assets/img/${response.data[0].imgPath}.png`)
+
         const image = getImageURL(response.data[0].imgPath)
         setImgPath(image)
       }
@@ -142,32 +129,14 @@ export default function Home() {
     }
   }
 
-  // const getCurrentSelection = () => {
-  //   console.log('filt ', filteredFish)
-  //   if (filteredFish) {
-  //     if (filteredFish.length) {
-  //       const currentFish = filteredFish[currentSelection]
-  //       console.log('cur ', currentFish)
-
-  //       return <BoxDiv title={currentFish.name} />
-  //     }
-  //     else {
-  //       return <BoxDiv title={'Fishy Name...'} />
-  //     }
-  //   }
-  // }
-
   const goBack = async () => {
     if (filteredFish.length) {
       if ((currentSelection - 1) >= 0) {
         let currentIndex = currentSelection - 1
         setCurrentSelection(currentIndex)
 
-        // const image = await import(`../${filteredFish[currentIndex].imgPath}`)
         const image = getImageURL(filteredFish[currentIndex].imgPath)
         setImgPath(image)
-
-        // setImgPath(image.default)
       }
     }
   }
@@ -177,10 +146,7 @@ export default function Home() {
       if ((currentSelection + 1) < filteredFish.length) {
         let currentIndex = currentSelection + 1
         setCurrentSelection(currentIndex)
-
-        // const image = await import(`../${filteredFish[currentIndex].imgPath}`)
-        // setImgPath(image.default)
-
+        
         const image = getImageURL(filteredFish[currentIndex].imgPath)
         setImgPath(image)
       }
@@ -223,7 +189,21 @@ export default function Home() {
     </form>
 
     const emptyFishDiv = 
-      <div className='flex flex-col xl:w-600px xl:h-350px h-450px'></div>
+      <div className='flex flex-col xl:w-600px xl:h-350px h-450px'>
+        {
+          !filteredFish.length && okClicked ?
+            <div className='flex flex-col'>
+              <div className='mb-5'>Currently there are no fish in our database for these parameters. Try a combination of these options for now!</div>
+              <ul className='ml-4'>
+                <li className='mb-3'>- 10 gallons: shoaling/schooling/territorial, beginner/intermediate/experienced</li>
+                <li className='mb-3'>- 20 gallons: schooling, experienced</li>
+                <li className='mb-3'>- 30 gallons: shoaling, beginner</li>
+                <li>- 60 gallons: shoaling/schooling, beginner/intermediate</li>
+              </ul>
+            </div>
+          : ''
+        }
+      </div>
 
     const fishDiv =
       <div className='flex flex-col items-center xl:w-600px xl:h-350px h-450px'>
