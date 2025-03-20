@@ -54,8 +54,8 @@ export default function Home() {
   ]
 
   useEffect(() => {
-    // setLoading(true)
-    setLoading(false)
+    setLoading(true)
+    // setLoading(false)
 
     setTimeout(() => {
       setLoading(false)
