@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 import BoxDiv from '../components/BoxDiv'
@@ -54,8 +54,8 @@ export default function Home() {
   ]
 
   useEffect(() => {
-    setLoading(true)
-    // setLoading(false)
+    // setLoading(true)
+    setLoading(false)
 
     setTimeout(() => {
       setLoading(false)
@@ -93,28 +93,6 @@ export default function Home() {
     catch (error) {
       console.log(error)
     }
-  }
-
-  const wrapperRef = useRef("menu");
-  useClickOutside(wrapperRef, () => {
-    setOpen(false);
-    setActiveSelect(null)
-  });
-
-  function useClickOutside(ref, onClickOutside) {
-    useEffect(() => {
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          onClickOutside();
-        }
-      }
-
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-     
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref, onClickOutside]);
   }
 
   const updateFormData = (value, index) => {
@@ -158,9 +136,9 @@ export default function Home() {
       {
         selectOptions.map((select, index) => (
           <div className='grow flex flex-col xl:mb-0 mb-7' key={index}>
-            <label>{select.label}</label>  
-            <div className='relative flex bg-teal-1 py-3 px-2 rounded-xl'>
-              <select ref={wrapperRef} defaultValue={'default'} className='bg-transparent w-full z-10' name="" id="" onClick={() => {setOpen(!open); setActiveSelect(index)}} onChange={(e) => updateFormData(e.target.value, index)}>
+            <label for={select.label}>{select.label}</label>  
+            <div className='relative flex bg-teal-1 rounded-xl'>
+              <select defaultValue={'default'} className='bg-transparent w-full z-10 py-3 px-2 rounded-xl focus:ring-2 focus:ring-blue-2' name={select.label} id={select.label} onChange={(e) => updateFormData(e.target.value, index)}>
                 <option value="default" disabled>Select an option...</option>
                 {
                   index == 0 ?
@@ -172,7 +150,7 @@ export default function Home() {
                   )) 
                 }
               </select>  
-              <img className={`${activeSelect == index && open ? 'rotate-arrow-up' : 'rotate-arrow-down'} absolute right-0 mr-2 mt-1 w-4`} src={arrowSelect} alt="arrow" />
+              <img className={`${activeSelect == index && open ? 'rotate-arrow-up' : 'rotate-arrow-down'} absolute right-0 mr-2 mt-4 w-4`} src={arrowSelect} alt="arrow" />
             </div>
           </div>
         ))

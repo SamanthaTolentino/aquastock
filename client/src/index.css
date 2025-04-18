@@ -36,14 +36,15 @@ select::-ms-expand {
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
+  background-image: url('./assets/img/arrow-select.png');
+  background-repeat: no-repeat;
+  background-position: right 9px top 50%;
+  background-color: #D1E9DF;
+  width: 100%;
+  padding: 13px 10px;
+  border-radius: 10px;
 }
 
-.rotate-arrow-up {
-  transform: rotate(180deg);
-  transition: transform 0.2s ease-out;
-}
-
-.rotate-arrow-down {
-  transform: rotate(0deg);
-  transition: transform 0.2s ease-out;
+select:focus {
+  outline: 2px #83C4D5 solid;
 }

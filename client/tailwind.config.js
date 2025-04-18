@@ -13,9 +13,11 @@ export default {
       'blue-1': '#CEE9F4',
       'blue-2': '#83C4D5',
       'teal-1': '#D1E9DF',
+      'teal-2': '#A3C2B5',
       'purple-1': '#ADC1E0',
-      'purple-2': '#95a7c2',
-      'red-1': '#a35b4d',
+      'purple-2': '#95A7C2',
+      'red-1': '#A35B4D',
+      'gray-1': '#CFCFCF',
     },
     borderWidth: {
       '2': '2px',

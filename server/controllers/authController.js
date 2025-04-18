@@ -1,6 +1,6 @@
-const Fish = require('../models/Fish')
+import { Fish } from '../models/Fish.js'
 
-const getFish = async (req, res) => {
+export const getFish = async (req, res) => {
   try {
     const fishes = await Fish.find()
     return res.json(fishes)
@@ -10,7 +10,7 @@ const getFish = async (req, res) => {
   }
 } 
 
-const getFilteredFish = async (req, res) => {
+export const getFilteredFish = async (req, res) => {
   try {
     const tankSize = req.query.tankSize
     const temperament = req.query.temperament
@@ -28,9 +28,4 @@ const getFilteredFish = async (req, res) => {
   catch (err) {
     console.log(err)
   }
-}
-
-module.exports = {
-  getFish,
-  getFilteredFish
 }

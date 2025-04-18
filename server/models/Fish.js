@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 const {Schema} = mongoose
 
 const fishSchema = new Schema({
@@ -6,6 +6,4 @@ const fishSchema = new Schema({
   tankSize: String,
 },)
 
-const FishModel = mongoose.model('fish', fishSchema)
-
-module.exports = FishModel
+export const Fish = mongoose.model('fish', fishSchema)
