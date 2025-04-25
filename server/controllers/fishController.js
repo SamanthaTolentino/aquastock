@@ -1,15 +1,5 @@
 import { Fish } from '../models/Fish.js'
 
-export const getFish = async (req, res) => {
-  try {
-    const fishes = await Fish.find()
-    return res.json(fishes)
-  }
-  catch (err) {
-    console.log(err)
-  }
-} 
-
 export const getFilteredFish = async (req, res) => {
   try {
     const tankSize = req.query.tankSize

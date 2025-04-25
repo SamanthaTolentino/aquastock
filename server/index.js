@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import path from 'path'
 import cors from 'cors'
 import mongoose from 'mongoose'
-import authRoutes from './routes/authRoutes.js'
+import routes from './routes/routes.js'
 
 dotenv.config()
 
@@ -20,7 +20,7 @@ const __dirname = path.resolve()
 app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
 app.use(express.json())
 
-app.use('/', authRoutes)
+app.use('/', routes)
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/client/dist')))
